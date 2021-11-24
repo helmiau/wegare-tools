@@ -26,6 +26,23 @@
 <div class="col text-center mx-auto" style="max-width: 80Vw">
 	<form>
 	  <div class="form-row">
+		<div class="form-group col-md-2">
+		  <label for="inputUsedTool">Used Tool</label>
+		</div>
+		<div class="form-group col-md-5">
+		  <select id="inputUsedTool" class="form-control">
+			<option selected>STL Tunnel</option>
+			<option>Trojan</option>
+			<option>Trojan-Go</option>
+		  </select>
+		</div>
+		<div class="form-group btn-group col-md-4" role="group">
+			<button type="submit" class="btn btn-danger">Load Config</button>
+			<button type="submit" class="btn btn-success">Save Config</button>
+			<button type="submit" class="btn btn-primary">Start Inject</button>
+		</div>
+	  </div>
+	  <div class="form-row">
 		<div class="form-group col-md-6">
 		  <label for="input_host">Host/IP Address</label>
 		  <input type="text" class="form-control" id="input_host" placeholder="www.helmiau.com">
@@ -81,18 +98,9 @@
 		  </label>
 		</div>
 	  </div>
-	  <div class="form-group">
-		  <button type="submit" class="btn btn-danger">Load Config</button>
-		  <button type="submit" class="btn btn-success">Save Config</button>
-		  <button type="submit" class="btn btn-primary">Start Inject</button>
-	  </div>
 	<p class="text-center">Copyright by  <a href="http://www.helmiau.com">Helmi Amirudin</a> ® 2021 🤝</p>
 	</form>
 </div>
-</div>
-</div>
-<br>
-
 </div>
 </body>
 </html>

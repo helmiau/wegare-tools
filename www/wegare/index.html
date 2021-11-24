@@ -26,10 +26,11 @@
 <div class="col text-center mx-auto" style="max-width: 80Vw">
 	<form>
 	  <div class="form-row">
-		<div class="form-group col-md-2">
-		  <label for="inputUsedTool">Used Tool</label>
+		<div class="form-group col-md-12">
+		  <label for="input_user">VPN Software & Configurations</label>
+		  </select>
 		</div>
-		<div class="form-group col-md-5">
+		<div class="form-group col-md-8">
 		  <select id="inputUsedTool" class="form-control">
 			<option selected>STL Tunnel</option>
 			<option>Trojan</option>
@@ -39,7 +40,6 @@
 		<div class="form-group btn-group col-md-4" role="group">
 			<button type="submit" class="btn btn-danger">Load Config</button>
 			<button type="submit" class="btn btn-success">Save Config</button>
-			<button type="submit" class="btn btn-primary">Start Inject</button>
 		</div>
 	  </div>
 	  <div class="form-row">
@@ -85,19 +85,25 @@
 		</div>
 	  </div>
 	  <div class="form-row">
-		<div class="form-group col-md-6">
+		<div class="form-group col-md-8">
 		  <input class="form-check-input" type="checkbox" id="autoreconnect">
 		  <label class="form-check-label" for="autoreconnect">
 			Auto Reconnect
 		  </label>
 		</div>
-		<div class="form-group col-md-6">
+		<div class="form-group col-md-2">
 		  <input class="form-check-input" type="checkbox" id="onboot">
 		  <label class="form-check-label" for="onboot">
 			Start On-Boot
 		  </label>
 		</div>
 	  </div>
+	  <div class="form-row">
+		<div class="form-group btn-group col-md-12" role="group">
+			<button type="submit" class="btn btn-primary btn-block">Start Inject</button>
+		</div>
+	  </div>
+	<br>
 	<p class="text-center">Copyright by  <a href="http://www.helmiau.com">Helmi Amirudin</a> ® 2021 🤝</p>
 	</form>
 </div>

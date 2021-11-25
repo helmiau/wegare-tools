@@ -1,7 +1,7 @@
-<!DOCTYPE html>
-<html lang="id">
+<!doctype html>
+<html lang="en">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 	<title>Wegare STL Tunnel</title>
 	<meta name="description" content="Portal Free VPN Sites Provider oleh Helmi Amirudin.">
@@ -10,110 +10,99 @@
 	<link rel="icon" type="image/png" sizes="180x180" href="assets/img/og-180.png">
 	<link rel="icon" type="image/png" sizes="192x192" href="assets/img/og-192.png">
 	<link rel="icon" type="image/png" sizes="512x512" href="assets/img/og-512.png">
-	<link rel="stylesheet" href="assets/bootstrap.min.css">
-	<link rel="stylesheet" href="assets/styles.min.css">
+	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-<div class="col text-center tcolor mx-auto" style="height: 100Vh;max-width: 100Vw;">
-<br>
-<div class="d-flex justify-content-center">
-	<h5 class="my-2"><strong>Wegare STL Tunnel GUI</strong></h5>
+    <div class="container">
+        <div class="row py-2">
+            <div class="col-lg-6 col-md-12 mx-auto mt-3">
+                <div class="card bg-info bg-transparent box-shadow">
+                    <nav class="navbar navbar-expand-sm navbar-light bg-transparent">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse justify-content-md-center" id="navbar">
+                            <strong>
+                            <ul class="navbar-nav">
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="config.html">Config</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">About</a>
+                                </li>
+                            </ul>
+                            </strong>
+                        </div>
+                    </nav>
+                    <div class="card-header">
+                        <form>
+                            <div class="form-group form-row my-auto">
+                                <div class="col-lg-5 col-md-5 form-row py-1">
+                                    <div class="col-lg-3 col-md-2 my-auto">
+                                        <label class="my-auto">Mode</label>
+                                    </div>
+                                    <div class="col">
+                                        <select class="form-control" required>
+                                            <option >mode.name</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-5 col-md-6 form-row py-1">
+                                    <div class="col-lg-3 col-md-2 my-auto">
+                                        <label class="my-auto">Config</label>
+                                    </div>
+                                    <div class="col">
+                                        <select class="form-control"required>
+                                            <option>profile</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col form-row py-1">
+                                    <div class="col">
+                                        <button type="submit" class="btn btn-danger">Start</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-body py-0 px-0">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 pb-lg-1">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="autostart">
+                                        <label class="form-check-label" for="autostart">
+                                            Auto start on boot
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 pb-lg-1">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="autorec">
+                                        <label class="form-check-label" for="autorec">
+                                            Auto Reconnect
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-11 mx-auto pt-2">
+                                    <pre ref="log" v-html="log" class="form-control text-left" style="height: 15rem; background-color: #e9ecef83"></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <footer class="text-center">
+                    <div>© Design by&nbsp;<a href="https://github.com/Putra-0">ADI-PUTRA</a>-2021</div>
+                </footer>
+            </div>
+        </div>
+    </div>
 </div>
-<div class="text-center d-flex d-xl-flex justify-content-center justify-content-xl-center">
-	<p class="text-center d-xl-flex justify-content-xl-center w-75">This tool is user interface for wegare stl tunnel.</p>
-</div>
-<br>
-<div class="col text-center mx-auto" style="max-width: 80Vw">
-	<form>
-	  <div class="form-row">
-		<div class="form-group col-md-12">
-		  <label for="input_user">VPN Software & Configurations</label>
-		  </select>
-		</div>
-		<div class="form-group col-md-8">
-		  <select id="inputUsedTool" class="form-control">
-			<option selected>STL - STL Tunnel</option>
-			<option>TJT - Trojan</option>
-			<option>TJG - Trojan-Go</option>
-			<option>L2I - L2TP/IPSec</option>
-			<option>OPVSS - OpenVPN ShadowSocks</option>
-			<option>OPVS - OpenVPN Stunnel</option>
-			<option>SST - ShadowSocks</option>
-			<option>SSRT - ShadowSocksR</option>
-			<option>SSTP - SSTP Tunnel</option>
-			<option>VMT - Vmess</option>
-			<option>VLESS - Vless</option>
-			<option>OPVC - OpenVPN Cloak</option>
-		  </select>
-		</div>
-		<div class="form-group btn-group col-md-4" role="group">
-			<button type="submit" class="btn btn-danger">Load Config</button>
-			<button type="submit" class="btn btn-success">Save Config</button>
-		</div>
-	  </div>
-	  <div class="form-row">
-		<div class="form-group col-md-4">
-		  <label for="input_host">Host/IP Address</label>
-		  <input type="text" class="form-control" id="input_host" placeholder="www.helmiau.com">
-		</div>
-		<div class="form-group col-md-1">
-		  <label for="input_port">Port</label>
-		  <input type="text" class="form-control" id="input_port" placeholder="443">
-		</div>
-		<div class="form-group col-md-3">
-		  <label for="input_user">Username</label>
-		  <input type="text" class="form-control" id="input_user" placeholder="helmiauganteng">
-		</div>
-		<div class="form-group col-md-4">
-		  <label for="input_pass">Password</label>
-		  <input type="text" class="form-control" id="input_pass" placeholder="katasandiku">
-		</div>
-	  </div>
-	  <div class="form-row">
-		<div class="form-group col-md-4">
-		  <label for="input_pass">SNI/Bug</label>
-		  <input type="text" class="form-control" id="input_pass" placeholder="mbah.youtube.com">
-		</div>
-		<div class="form-group col-md-4">
-		  <label for="inputState">Inject Mode</label>
-		  <select id="inputState" class="form-control">
-			<option selected>HTTP Proxy + Payload</option>
-			<option>SSL/TLS Direct</option>
-			<option>SSH Direct + Payload</option>
-			<option>SSL/TLS + Payload</option>
-		  </select>
-		</div>
-		<div class="form-group col-md-4">
-		  <label for="inputState">Socks Proxy</label>
-		  <select id="inputState" class="form-control">
-			<option selected>Badvpn-Tun2socks</option>
-			<option>Transparent Proxy</option>
-		  </select>
-		</div>
-	  </div>
-	  <div class="form-row">
-		<div class="form-group col-md-8">
-		  <input class="form-check-input" type="checkbox" id="autoreconnect">
-		  <label class="form-check-label" for="autoreconnect">
-			Auto Reconnect
-		  </label>
-		</div>
-		<div class="form-group col-md-2">
-		  <input class="form-check-input" type="checkbox" id="onboot">
-		  <label class="form-check-label" for="onboot">
-			Start On-Boot
-		  </label>
-		</div>
-	  </div>
-	  <div class="form-row">
-		<div class="form-group btn-group col-md-12" role="group">
-			<button type="submit" class="btn btn-primary btn-block">Start Inject</button>
-		</div>
-	  </div>
-	<br>
-	<p class="text-center">Copyright by  <a href="http://www.helmiau.com">Helmi Amirudin</a> ® 2021 🤝</p>
-	</form>
-</div>
-</div>
+<script src="assets/js/jquery-3.6.0.slim.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
 </body>
 </html>

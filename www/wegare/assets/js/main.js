@@ -8,11 +8,12 @@ function start() {
 		beforeSend: function() {
 			$('#start').attr('disabled', true);
 			$('#stop').attr('disabled', true);
+			$('#autoBootRecon').attr('disabled', true);
 			$("#log").val("");
 		},
 		success: function (response) {
-			$('#start').attr('disabled', false);
 			$('#stop').attr('disabled', false);
+			$('#autoBootRecon').attr('disabled', false);
 			$("#log").val(response);
 		}
 	});
@@ -28,11 +29,13 @@ function stop() {
 		beforeSend: function() {
 			$('#start').attr('disabled', true);
 			$('#stop').attr('disabled', true);
+			$('#autoBootRecon').attr('disabled', true);
 			$("#log").val("");
 		},
 		success: function (response) {
 			$('#start').attr('disabled', false);
 			$('#stop').attr('disabled', false);
+			$('#autoBootRecon').attr('disabled', false);
 			$("#log").val(response);
 		}
 	});
@@ -67,10 +70,33 @@ function saveConfig() {
 			},
 			success: function (response) {
 				$('#saveConfig').attr('disabled', false);
-				alert("Sett Profile Sukses");
+				alert(response);
 			}
 		});
     } else {
     	alert("Harap Isi Semua");
     }
+}
+
+function autoBootRecon(val) {
+	option = val ? 'on' : 'off';
+	$.ajax({
+		url: 'api.php',
+		type: 'POST',
+		data: {
+			action: 'autoBootRecon',
+			option: option
+		},
+		beforeSend: function() {
+			$('#start').attr('disabled', true);
+			$('#stop').attr('disabled', true);
+			$('#autoBootRecon').attr('disabled', true);
+		},
+		success: function (response) {
+			$('#start').attr('disabled', false);
+			$('#stop').attr('disabled', false);
+			$('#autoBootRecon').attr('disabled', false);
+			alert(response);
+		}
+	});
 }

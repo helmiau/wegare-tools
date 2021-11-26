@@ -18,6 +18,9 @@
         <div class="row py-2">
             <div class="col-lg-6 col-md-12 mx-auto mt-3">
                 <div class="card bg-info bg-transparent box-shadow">
+                	<div class="col-lg-12">
+                            <h4 class="text-center my-4">STL by Wegare</h4>
+                        </div>
                     <nav class="navbar navbar-expand-sm navbar-light bg-transparent">
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
@@ -29,7 +32,7 @@
                                     <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="config.html">Config</a>
+                                    <a class="nav-link" href="config.php">Config</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#">About</a>
@@ -39,42 +42,21 @@
                         </div>
                     </nav>
                     <div class="card-header">
-                        <form>
-                            <div class="form-group form-row my-auto">
-                                <div class="col-lg-5 col-md-5 form-row py-1">
-                                    <div class="col-lg-3 col-md-2 my-auto">
-                                        <label class="my-auto">Mode</label>
-                                    </div>
-                                    <div class="col">
-                                        <select class="form-control" required>
-                                            <option >mode.name</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-lg-5 col-md-6 form-row py-1">
-                                    <div class="col-lg-3 col-md-2 my-auto">
-                                        <label class="my-auto">Config</label>
-                                    </div>
-                                    <div class="col">
-                                        <select class="form-control"required>
-                                            <option>profile</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col form-row py-1">
-                                    <div class="col">
-                                        <button type="submit" class="btn btn-danger">Start</button>
-                                    </div>
+                        <div class="form-group form-row my-auto">
+                            <div class="col form-row py-1">
+                                <div class="col">
+                                    <button type="submit" onclick="start();" id="start" class="btn btn-primary">Start</button>
+                                    <button type="submit" onclick="stop();" id="stop" class="btn btn-danger">Stop</button>
                                 </div>
                             </div>
-                        </form>
+                        </div>
                     </div>
                     <div class="card-body">
                         <div class="card-body py-0 px-0">
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 pb-lg-1">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="autostart">
+                                        <input class="form-check-input" type="checkbox" id="autostart" disabled>
                                         <label class="form-check-label" for="autostart">
                                             Auto start on boot
                                         </label>
@@ -82,14 +64,14 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 pb-lg-1">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="autorec">
+                                        <input class="form-check-input" type="checkbox" id="autorec" disabled>
                                         <label class="form-check-label" for="autorec">
                                             Auto Reconnect
                                         </label>
                                     </div>
                                 </div>
                                 <div class="col-lg-11 mx-auto pt-2">
-                                    <pre ref="log" v-html="log" class="form-control text-left" style="height: 15rem; background-color: #e9ecef83"></pre>
+                                    <textarea id="log" class="form-control text-left" style="height: 15rem; background-color: #e9ecef83" disabled></textarea>
                                 </div>
                             </div>
                         </div>
@@ -97,12 +79,14 @@
                 </div>
                 <footer class="text-center">
                     <div>© Design by&nbsp;<a href="https://github.com/Putra-0">ADI-PUTRA</a>-2021</div>
+                    <div>© <a href="https://github.com/hunternblz">M Nabil (HunterNblz)</a></div>
                 </footer>
             </div>
         </div>
     </div>
 </div>
-<script src="assets/js/jquery-3.6.0.slim.min.js"></script>
+<script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/main.js"></script>
 </body>
 </html>

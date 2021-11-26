@@ -25,8 +25,8 @@ if (preg_match('/TERHUBUNG/', $log)) $terhubung = true;
             <div class="col-lg-6 col-md-12 mx-auto mt-3">
                 <div class="card bg-info bg-transparent box-shadow">
                 	<div class="col-lg-12">
-                            <h4 class="text-center my-4">STL by Wegare</h4>
-                        </div>
+                        <h4 class="text-center my-4">STL by Wegare</h4>
+                    </div>
                     <nav class="navbar navbar-expand-sm navbar-light bg-transparent">
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
@@ -48,14 +48,14 @@ if (preg_match('/TERHUBUNG/', $log)) $terhubung = true;
                         </div>
                     </nav>
                     <div class="card-header">
-                            <div class="form-group form-row my-auto">
-                                <div class="col form-row py-1">
-                                    <div class="col">
-                                        <button type="submit" onclick="start();" id="start" class="btn btn-primary" <?php if ($terhubung) echo "disabled"; ?>>Start</button>
-                                        <button type="submit" onclick="stop();" id="stop" class="btn btn-danger">Stop</button>
-                                    </div>
+                        <div class="form-group form-row my-auto">
+                            <div class="col form-row py-1">
+                                <div class="col">
+                                    <button type="submit" onclick="start();" id="start" class="btn btn-primary" <?php if ($terhubung) echo "disabled"; ?>>Start</button>
+                                    <button type="submit" onclick="stop();" id="stop" class="btn btn-danger">Stop</button>
                                 </div>
                             </div>
+                        </div>
                     </div>
                     <div class="card-body">
                         <div class="card-body py-0 px-0">

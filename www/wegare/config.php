@@ -38,10 +38,10 @@ exec("cat /root/akun/stl.txt | awk 'NR==10'", $bug2);
                             <strong>
                             <ul class="navbar-nav">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                                    <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
                                 </li>
                                 <li class="nav-item active">
-                                    <a class="nav-link" href="config.html">Config</a>
+                                    <a class="nav-link" href="config.php">Config</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#">About</a>
@@ -117,6 +117,6 @@ exec("cat /root/akun/stl.txt | awk 'NR==10'", $bug2);
     </div>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/main.js"></script>
+    <script src="assets/js/main.js?<?= time(); ?>"></script>
 </body>
 </html>

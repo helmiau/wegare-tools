@@ -10,7 +10,7 @@ function tunnel() {
 		sleep(3);
 		exec("cat logs.txt 2>/dev/null | grep \"CONNECTED SUCCESSFULLY\"|awk '{print $4}'|tail -n1", $var);
 		if (implode($var) == "SUCCESSFULLY") {
-			exec("screen -dmS GProxy badvpn-tun2socks --tundev tun1 --netif-ipaddr 10.0.0.2 --netif-netmask 255.255.255.0 --socks-server-addr 127.0.0.1:1080 --udpgw-remote-server-addr 127.0.0.1:7300 --udpgw-connection-buffer-size 65535 --udpgw-transparent-dns &");
+			exec("screen -dmS GProxy bash -c 'gproxy; exec sh'");
 			$str = "[".date("H:i:s")."] TERHUBUNG!\n";
 			file_put_contents("logs-2.txt", $str, FILE_APPEND);
 			echo $str;
@@ -62,6 +62,7 @@ function start() {
 function stop() {
 	if (file_exists("logs-2.txt")) unlink("logs-2.txt");
 	exec("cat /root/akun/pillstl.txt", $pillstl);
+	exec("screen -S GProxy -X quit");
 	if (implode($pillstl) == "1") {
 		exec("cat /root/akun/stl.txt | awk 'NR==2'", $host);
 		exec("cat /root/akun/ipmodem.txt | grep -i ipmodem | cut -d= -f2 | tail -n1", $route);

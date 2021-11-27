@@ -5,7 +5,7 @@ function start() {
 		data: {
 			action: 'start'
 		},
-		beforeSend: function() {
+		beforeSend: function () {
 			$('#start').attr('disabled', true);
 			$('#stop').attr('disabled', true);
 			$('#autoBootRecon').attr('disabled', true);
@@ -26,7 +26,7 @@ function stop() {
 		data: {
 			action: 'stop'
 		},
-		beforeSend: function() {
+		beforeSend: function () {
 			$('#start').attr('disabled', true);
 			$('#stop').attr('disabled', true);
 			$('#autoBootRecon').attr('disabled', true);
@@ -43,15 +43,15 @@ function stop() {
 
 function saveConfig() {
 	var pillstl = $('#pillstl').val();
-    var host = $('#host').val();
-    var port = $('#port').val();
-    var udp = $('#udp').val();
-    var user = $('#user').val();
-    var pass = $('#pass').val();
-    var bug = $('#bug').val();
-    var payload = $('#payload').val();
-    if (host && port && udp && user && pass && bug && payload) {
-    	$.ajax({
+	var host = $('#host').val();
+	var port = $('#port').val();
+	var udp = $('#udp').val();
+	var user = $('#user').val();
+	var pass = $('#pass').val();
+	var bug = $('#bug').val();
+	var payload = $('#payload').val();
+	if (host && port && udp && user && pass && bug && payload) {
+		$.ajax({
 			url: 'api.php',
 			type: 'POST',
 			data: {
@@ -65,7 +65,7 @@ function saveConfig() {
 				bug: bug,
 				payload: payload
 			},
-			beforeSend: function() {
+			beforeSend: function () {
 				$('#saveConfig').attr('disabled', true);
 			},
 			success: function (response) {
@@ -73,9 +73,9 @@ function saveConfig() {
 				alert(response);
 			}
 		});
-    } else {
-    	alert("Harap Isi Semua");
-    }
+	} else {
+		alert("Harap Isi Semua");
+	}
 }
 
 function autoBootRecon(val) {
@@ -87,13 +87,13 @@ function autoBootRecon(val) {
 			action: 'autoBootRecon',
 			option: option
 		},
-		beforeSend: function() {
+		beforeSend: function () {
 			$('#start').attr('disabled', true);
 			$('#stop').attr('disabled', true);
 			$('#autoBootRecon').attr('disabled', true);
 		},
 		success: function (response) {
-			$('#start').attr('disabled', false);
+			if (!$("#start").is(":disabled")) $('#start').attr('disabled', false);
 			$('#stop').attr('disabled', false);
 			$('#autoBootRecon').attr('disabled', false);
 			alert(response);

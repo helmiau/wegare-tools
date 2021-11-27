@@ -1,4 +1,5 @@
 <?php
+exec("cat /root/akun/pillstl.txt", $pillstl2);
 exec("cat /root/akun/stl.txt | awk 'NR==2'", $host2);
 exec("cat /root/akun/stl.txt | awk 'NR==3'", $port2);
 exec("cat /root/akun/stl.txt | awk 'NR==4'", $user2);
@@ -61,8 +62,8 @@ exec("cat /root/akun/stl.txt | awk 'NR==10'", $bug2);
                             <div class="col-md-6">
                                 <label>Socks Proxy</label>
                                 <select class="form-control" id="pillstl" required>
-                                    <option value="1">Badvpn-Tun2socks</option>
-                                    <option value="2">Transparent Proxy</option>
+                                    <option value="1" <?php if (implode($pillstl2) == "1") echo "selected"; ?>>Badvpn-Tun2socks</option>
+                                    <option value="2" <?php if (implode($pillstl2) == "2") echo "selected"; ?>>Transparent Proxy</option>
                                 </select>
                             </div>
                         </div>

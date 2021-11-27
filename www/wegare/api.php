@@ -3,26 +3,37 @@ function tunnel() {
 	exec("nohup python3 /root/akun/tunnel.py > /dev/null 2>&1 &");
 	sleep(1);
 	exec("nohup python3 /root/akun/ssh.py 1 > /dev/null 2>&1 &");
-	echo "is connecting to the internet\n";
+	$str = "[".date("H:i:s")."] is connecting to the internet\n";
+	file_put_contents("logs-2.txt", $str, FILE_APPEND);
+	echo $str;
 	for ($i = 1; $i <= 3; $i++) {
 		sleep(3);
 		exec("cat logs.txt 2>/dev/null | grep \"CONNECTED SUCCESSFULLY\"|awk '{print $4}'|tail -n1", $var);
 		if (implode($var) == "SUCCESSFULLY") {
 			exec("screen -dmS GProxy badvpn-tun2socks --tundev tun1 --netif-ipaddr 10.0.0.2 --netif-netmask 255.255.255.0 --socks-server-addr 127.0.0.1:1080 --udpgw-remote-server-addr 127.0.0.1:7300 --udpgw-connection-buffer-size 65535 --udpgw-transparent-dns &");
-			echo "TERHUBUNG!\n";
+			$str = "[".date("H:i:s")."] TERHUBUNG!\n";
+			file_put_contents("logs-2.txt", $str, FILE_APPEND);
+			echo $str;
 			break;
 		} else {
-			echo "{".$i."}. Reconnect 3s\n";
+			$str = "[".date("H:i:s")."] ".$i.". Reconnect 3s\n";
+			file_put_contents("logs-2.txt", $str, FILE_APPEND);
+			echo $str;
 			exec("nohup python3 /root/akun/ssh.py 1 > /dev/null 2>&1 &");
 		}
-		echo "Failed!\n";
+		$str = "[".date("H:i:s")."] Failed!\n";
+		file_put_contents("logs-2.txt", $str, FILE_APPEND);
+		echo $str;
 	}
 }
 
 function start() {
+	if (file_exists("logs-2.txt")) unlink("logs-2.txt");
 	exec("cat /root/akun/stl.txt | awk 'NR==2'", $cek);
 	if (empty(implode($cek))) {
-		echo "Anda Belum Membuat Profile";
+		$str = "[".date("H:i:s")."] Anda Belum Membuat Profile\n";
+		file_put_contents("logs-2.txt", $str, FILE_APPEND);
+		echo $str;
 	} else {
 		stop();
 		exec("cat /root/akun/pillstl.txt", $pillstl);
@@ -42,15 +53,14 @@ function start() {
 			tunnel();
 		}
 		exec("rm -r logs.txt 2>/dev/null");
-		file_put_contents("/usr/bin/ping-stl", "#!/bin/bash\n");
-		file_put_contents("/usr/bin/ping-stl", "#stl (Wegare)\n", FILE_APPEND);
-		file_put_contents("/usr/bin/ping-stl", "httping m.google.com\n", FILE_APPEND);
+		file_put_contents("/usr/bin/ping-stl", "#!/bin/bash\n#stl (Wegare)\nhttping m.google.com\n");
 		exec("chmod +x /usr/bin/ping-stl");
 		exec("/usr/bin/ping-stl > /dev/null 2>&1 &");
 	}
 }
 
 function stop() {
+	if (file_exists("logs-2.txt")) unlink("logs-2.txt");
 	exec("cat /root/akun/pillstl.txt", $pillstl);
 	if (implode($pillstl) == "1") {
 		exec("cat /root/akun/stl.txt | awk 'NR==2'", $host);
@@ -69,11 +79,10 @@ function stop() {
 	exec("/etc/init.d/dnsmasq restart 2>/dev/null");
 }
 
-function autoReconnect($val) {
-	if ($val) {
-		file_put_contents("/etc/crontabs/root", "# BEGIN AUTOREKONEKSTL\n", FILE_APPEND);
-		file_put_contents("/etc/crontabs/root", "*/1 * * * *  autorekonek-stl\n", FILE_APPEND);
-		file_put_contents("/etc/crontabs/root", "# END AUTOREKONEKSTL\n", FILE_APPEND);
+function autoReconnect() {
+	$option = $_POST["option"];
+	if ($option == "on") {
+		file_put_contents("/etc/crontabs/root", "# BEGIN AUTOREKONEKSTL\n*/1 * * * *  autorekonek-stl\n# END AUTOREKONEKSTL\n", FILE_APPEND);
 		exec("sed -i '/^$/d' /etc/crontabs/root 2>/dev/null");
 		exec("/etc/init.d/cron restart");
 		echo "Enable Suksess";
@@ -96,7 +105,8 @@ function saveConfig() {
 	if ($pillstl == "1") {
 		$badvpn = "badvpn-tun2socks --tundev tun1 --netif-ipaddr 10.0.0.2 --netif-netmask 255.255.255.0 --socks-server-addr 127.0.0.1:1080 --udpgw-remote-server-addr 127.0.0.1:$udp --udpgw-connection-buffer-size 65535 --udpgw-transparent-dns &";
 	} else if ($pillstl == "2") {
-		// Belum selesai
+		file_put_contents("/etc/redsocks.conf", base64_decode("YmFzZSB7Cglsb2dfZGVidWcgPSBvZmY7Cglsb2dfaW5mbyA9IG9mZjsKCXJlZGlyZWN0b3IgPSBpcHRhYmxlczsKfQpyZWRzb2NrcyB7Cglsb2NhbF9pcCA9IDAuMC4wLjA7Cglsb2NhbF9wb3J0ID0gODEyMzsKCWlwID0gMTI3LjAuMC4xOwoJcG9ydCA9IDEwODA7Cgl0eXBlID0gc29ja3M1Owp9CnJlZHNvY2tzIHsKCWxvY2FsX2lwID0gMTI3LjAuMC4xOwoJbG9jYWxfcG9ydCA9IDgxMjQ7CglpcCA9IDEwLjAuMC4xOwoJcG9ydCA9IDEwODA7Cgl0eXBlID0gc29ja3M1Owp9CnJlZHVkcCB7CiAgICBsb2NhbF9pcCA9IDEyNy4wLjAuMTsgCiAgICBsb2NhbF9wb3J0ID0gJHVkcDsKICAgIGlwID0gMTAuMC4wLjE7CiAgICBwb3J0ID0gMTA4MDsKICAgIGRlc3RfaXAgPSA4LjguOC44OyAKICAgIGRlc3RfcG9ydCA9IDUzOyAKICAgIHVkcF90aW1lb3V0ID0gMzA7CiAgICB1ZHBfdGltZW91dF9zdHJlYW0gPSAxODA7Cn0KZG5zdGMgewoJbG9jYWxfaXAgPSAxMjcuMC4wLjE7Cglsb2NhbF9wb3J0ID0gNTMwMDsKfQ=="));
+		$badvpn = "#!/bin/bash\n#stl (Wegare)\niptables -t nat -N PROXY 2>/dev/null\niptables -t nat -A PREROUTING -i br-lan -p tcp -j PROXY\niptables -t nat -A PROXY -d 127.0.0.0/8 -j RETURN\niptables -t nat -A PROXY -d 192.168.0.0/16 -j RETURN\niptables -t nat -A PROXY -d 0.0.0.0/8 -j RETURN\niptables -t nat -A PROXY -d 10.0.0.0/8 -j RETURN\niptables -t nat -A PROXY -p tcp -j REDIRECT --to-ports 8123\niptables -t nat -A PROXY -p tcp -j REDIRECT --to-ports 8124\niptables -t nat -A PROXY -p udp --dport 53 -j REDIRECT --to-ports ".$udp."\nredsocks -c /etc/redsocks.conf -p /var/run/redsocks.pid &";
 	}
 	file_put_contents("/usr/bin/gproxy", $badvpn."\n");
 	exec("chmod +x /usr/bin/gproxy");
@@ -117,10 +127,15 @@ switch ($action) {
 		break;
 	case "stop";
 		stop();
-		echo "Stop Sukses";
+		$str = "[".date("H:i:s")."] Stop Sukses\n";
+		file_put_contents("logs-2.txt", $str, FILE_APPEND);
+		echo $str;
 		break;
 	case "saveConfig";
 		saveConfig();
+		break;
+	case "autoBootRecon";
+		autoReconnect();
 		break;
 }
 ?>

@@ -62,7 +62,7 @@ exec("cat /root/akun/stl.txt | awk 'NR==10'", $bug2);
                                 <label>Socks Proxy</label>
                                 <select class="form-control" id="pillstl" required>
                                     <option value="1">Badvpn-Tun2socks</option>
-                                    <option value="2" disabled>Tranparent Proxy</option>
+                                    <option value="2">Transparent Proxy</option>
                                 </select>
                             </div>
                         </div>

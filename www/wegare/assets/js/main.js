@@ -1,3 +1,16 @@
+$(document).ready(function() {
+	setInterval(function() {
+		$.ajax({
+			url: 'logs-2.txt',
+			type: 'GET',
+			cache: false,
+			success: function (response) {
+				$("#log").val(response);
+			}
+		});
+	}, 1000);
+});
+
 function start() {
 	$.ajax({
 		url: 'api.php',

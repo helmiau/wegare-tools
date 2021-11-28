@@ -3,37 +3,28 @@ function tunnel() {
 	exec("nohup python3 /root/akun/tunnel.py > /dev/null 2>&1 &");
 	sleep(1);
 	exec("nohup python3 /root/akun/ssh.py 1 > /dev/null 2>&1 &");
-	$str = "[".date("H:i:s")."] is connecting to the internet\n";
-	file_put_contents("logs-2.txt", $str, FILE_APPEND);
-	echo $str;
+	saveLog("is connecting to the internet");
 	for ($i = 1; $i <= 3; $i++) {
 		sleep(3);
 		exec("cat logs.txt 2>/dev/null | grep \"CONNECTED SUCCESSFULLY\"|awk '{print $4}'|tail -n1", $var);
 		if (implode($var) == "SUCCESSFULLY") {
 			exec("screen -dmS GProxy bash -c 'gproxy; exec sh'");
-			$str = "[".date("H:i:s")."] TERHUBUNG!\n";
-			file_put_contents("logs-2.txt", $str, FILE_APPEND);
-			echo $str;
+			saveLog("TERHUBUNG!");
 			break;
 		} else {
-			$str = "[".date("H:i:s")."] ".$i.". Reconnect 3s\n";
-			file_put_contents("logs-2.txt", $str, FILE_APPEND);
-			echo $str;
+			saveLog($i.". Reconnect 3s");
 			exec("nohup python3 /root/akun/ssh.py 1 > /dev/null 2>&1 &");
 		}
-		$str = "[".date("H:i:s")."] Failed!\n";
-		file_put_contents("logs-2.txt", $str, FILE_APPEND);
-		echo $str;
+		saveLog("Failed!");
 	}
 }
 
 function start() {
 	if (file_exists("logs-2.txt")) unlink("logs-2.txt");
+	saveLog("Menjalankan STL");
 	exec("cat /root/akun/stl.txt | awk 'NR==2'", $cek);
 	if (empty(implode($cek))) {
-		$str = "[".date("H:i:s")."] Anda Belum Membuat Profile\n";
-		file_put_contents("logs-2.txt", $str, FILE_APPEND);
-		echo $str;
+		saveLog("Anda Belum Membuat Profile");
 	} else {
 		stop();
 		exec("cat /root/akun/pillstl.txt", $pillstl);
@@ -60,7 +51,6 @@ function start() {
 }
 
 function stop() {
-	if (file_exists("logs-2.txt")) unlink("logs-2.txt");
 	exec("cat /root/akun/pillstl.txt", $pillstl);
 	exec("screen -S GProxy -X quit");
 	if (implode($pillstl) == "1") {
@@ -121,16 +111,22 @@ function saveConfig() {
 	echo "Sett Profile Sukses";
 }
 
+function saveLog($str) {
+	$str = "[".date("H:i:s")."] ".$str."\n";
+	file_put_contents("logs-2.txt", $str, FILE_APPEND);
+	echo $str;
+}
+
 $action = $_POST["action"];
 switch ($action) {
 	case "start";
 		start();
 		break;
 	case "stop";
+		if (file_exists("logs-2.txt")) unlink("logs-2.txt");
+		saveLog("Menghentikan STL");
 		stop();
-		$str = "[".date("H:i:s")."] Stop Sukses\n";
-		file_put_contents("logs-2.txt", $str, FILE_APPEND);
-		echo $str;
+		saveLog("Stop Sukses");
 		break;
 	case "saveConfig";
 		saveConfig();

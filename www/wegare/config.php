@@ -45,7 +45,7 @@ exec("cat /root/akun/stl.txt | awk 'NR==10'", $bug2);
                                     <a class="nav-link" href="config.php">Config</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">About</a>
+                                    <a class="nav-link" href="tentang.php">About</a>
                                 </li>
                             </ul>
                             </strong>
@@ -109,10 +109,7 @@ exec("cat /root/akun/stl.txt | awk 'NR==10'", $bug2);
                         </div>
                     </div>
                 </div>
-                <footer class="text-center">
-                    <div>© Design by&nbsp;<a href="https://github.com/Putra-0">ADI-PUTRA</a>-2021</div>
-                    <div>© <a href="https://github.com/hunternblz">M Nabil (HunterNblz)</a></div>
-                </footer>
+                </div>
             </div>
         </div>
     </div>

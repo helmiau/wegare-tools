@@ -40,7 +40,7 @@ function start() {
 			exec("route add 8.8.4.4 gw ".implode($route)." metric 0");
 			exec("route add ".implode($host)." gw ".implode($route)." metric 0");
 			exec("route add default gw 10.0.0.2 metric 0");
-		} else if ($pillstl == "2") {
+		} else if (implode($pillstl) == "2") {
 			tunnel();
 		}
 		exec("rm -r logs.txt 2>/dev/null");

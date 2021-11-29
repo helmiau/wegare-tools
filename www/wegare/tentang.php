@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-	<title>Wegare STL Tunnel - About</title>
+	<title>Wegare STL Tunnel</title>
 	<meta name="description" content="Portal Free VPN Sites Provider oleh Helmi Amirudin.">
 	<link rel="icon" type="image/png" sizes="16x16" href="assets/img/og-16.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="assets/img/og-32.png">
@@ -12,7 +12,6 @@
 	<link rel="icon" type="image/png" sizes="512x512" href="assets/img/og-512.png">
 	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
 </head>
 <body>
     <div class="container">
@@ -20,7 +19,7 @@
             <div class="col-lg-6 col-md-12 mx-auto mt-3">
                 <div class="card bg-info bg-transparent box-shadow">
                     <div class="col-lg-12">
-                        <h4 class="text-center my-4"><i class="fa fa-info"></i> STL by Wegare</h4>
+                        <h4 class="text-center my-4">STL by Wegare</h4>
                     </div>
                     <nav class="navbar navbar-expand-sm navbar-light bg-transparent">
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">

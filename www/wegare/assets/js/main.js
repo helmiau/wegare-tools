@@ -19,13 +19,12 @@ function start() {
 			action: 'start'
 		},
 		beforeSend: function () {
-			$('#start').html('<i class="fa fa-spinner fa-spin"></i> Start').attr('disabled', true);
+			$('#start').attr('disabled', true);
 			$('#stop').attr('disabled', true);
 			$('#autoBootRecon').attr('disabled', true);
 			$("#log").val("");
 		},
 		success: function (response) {
-			$('#start').html('<i class="fa fa-play"></i> Start');
 			$('#stop').attr('disabled', false);
 			$('#autoBootRecon').attr('disabled', false);
 			$("#log").val(response);
@@ -42,13 +41,13 @@ function stop() {
 		},
 		beforeSend: function () {
 			$('#start').attr('disabled', true);
-			$('#stop').html('<i class="fa fa-spinner fa-spin"></i> Stop').attr('disabled', true);
+			$('#stop').attr('disabled', true);
 			$('#autoBootRecon').attr('disabled', true);
 			$("#log").val("");
 		},
 		success: function (response) {
 			$('#start').attr('disabled', false);
-			$('#stop').html('<i class="fa fa-stop"></i> Stop').attr('disabled', false);
+			$('#stop').attr('disabled', false);
 			$('#autoBootRecon').attr('disabled', false);
 			$("#log").val(response);
 		}

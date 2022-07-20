@@ -15,3 +15,9 @@ This is wegare tools, but this is all-in-one. Here is the source <https://github
   ```
 wget -q --no-check-certificate "https://raw.githubusercontent.com/helmiau/wegare-tools/main/wegare" -O /bin/wegare && chmod 777 /bin/wegare && /bin/wegare
   ```
+
+Credits
+- Wega Regianto
+- Nur Adi Saputra
+- Muhammad Nabil
+- Helmi Amirudin
